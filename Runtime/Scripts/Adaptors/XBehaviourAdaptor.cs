@@ -21,7 +21,7 @@ namespace TinaX.XComponent.Internal.Adaptor
             return new MyXBehaviourAdaptor(appdomain, instance);
         }
 
-        class MyXBehaviourAdaptor : XBehaviour
+        class MyXBehaviourAdaptor : XBehaviour , CrossBindingAdaptorType
         {
             ILTypeInstance instance;
             ILRuntime.Runtime.Enviorment.AppDomain appdomain;
@@ -76,6 +76,8 @@ namespace TinaX.XComponent.Internal.Adaptor
 
 
             object[] param_1 = new object[1];
+
+            public ILTypeInstance ILInstance => this.instance;
 
             public MyXBehaviourAdaptor()
             {
@@ -307,6 +309,19 @@ namespace TinaX.XComponent.Internal.Adaptor
                 }
                 else
                     base.OnMessage(msgName,msgParams);
+            }
+
+
+            public override string ToString()
+            {
+                IMethod m = appdomain.ObjectType.GetMethod("ToString", 0);
+                m = instance.Type.GetVirtualMethod(m);
+                if (m == null || m is ILMethod)
+                {
+                    return instance.ToString();
+                }
+                else
+                    return instance.Type.FullName;
             }
 
         }

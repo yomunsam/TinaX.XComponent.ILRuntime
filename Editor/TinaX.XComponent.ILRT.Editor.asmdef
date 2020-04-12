@@ -1,0 +1,21 @@
+{
+    "name": "TinaX.XComponent.ILRT.Editor",
+    "references": [
+        "GUID:0415e14526b76a0478e07275a7237921",
+        "GUID:9db5e326baf15604fb41b0ba171e2039",
+        "GUID:861b42dc2c9c68d49b36d568b9f894d0",
+        "GUID:8048103bccb874b46902aea4e95cc74e",
+        "GUID:bac5e9fc211f85c43903197cb77e851f"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
