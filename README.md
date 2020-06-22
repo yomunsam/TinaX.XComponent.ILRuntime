@@ -1,45 +1,144 @@
-# TinaX Framework - XComponent - ILRuntime Extension .
+# TinaX Framework - XComponent extension for ILRuntime.
 
-<a href="https://tinax.corala.space" target="_blank"><img src="https://github.com/yomunsam/TinaX.Core/raw/master/readme_res/logo.png" width = "420" height = "187" alt="logo" align=center /></a>
+<img src="https://github.com/yomunsam/TinaX.Core/raw/master/readme_res/logo.png" width = "360" height = "160" alt="logo" align=center />
 
 [![LICENSE](https://img.shields.io/badge/license-NPL%20(The%20996%20Prohibited%20License)-blue.svg)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
 <a href="https://996.icu"><img src="https://img.shields.io/badge/link-996.icu-red.svg" alt="996.icu"></a>
-[![LICENSE](https://camo.githubusercontent.com/3867ce531c10be1c59fae9642d8feca417d39b58/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f6c6963656e73652f636f6f6b6965592f596561726e696e672e737667)](https://github.com/yomunsam/TinaX/blob/master/LICENSE)
+[![LICENSE](https://camo.githubusercontent.com/890acbdcb87868b382af9a4b1fac507b9659d9bf/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6c6963656e73652d4d49542d626c75652e737667)](https://github.com/yomunsam/TinaX/blob/master/LICENSE)
 
-该包是让`TinaX.XComponent`包能够配合`TinaX.ILRuntime`使用的扩展包。
+<!-- [![LICENSE](https://camo.githubusercontent.com/3867ce531c10be1c59fae9642d8feca417d39b58/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f6c6963656e73652f636f6f6b6965592f596561726e696e672e737667)](https://github.com/yomunsam/TinaX/blob/master/LICENSE) -->
 
-This package is an extension package that enables the `TinaX.XComponent` package to work with `TinaX.ILRuntime`.
+TinaX is a Unity-based framework, simple , complete and delightful, ready to use.
+
+TinaX provides functionality in the form of "Unity packages". 
+
+`TinaX.XComponent.ILRuntime` is an extension package for [TinaX.ILRuntime](https://github.com/yomunsam/TinaX.ILRuntime), which is used for more pleasant use of XComponent in hot update code.
 
 <br>
 
-您可以使用Unity Package Manager来安装使用该包。
+package name: `io.nekonya.tinax.xcomponent.ilruntime`
 
-You can use the Unity Package Manager to install and use this package.  
+<br>
+
+"Readme" in other languages :
+
+- [简体中文](README_CN.md)
+
+<br>
+
+------
+
+## Usage
+
+Invoke register method when framework is initializing:
+
+``` csharp
+using TinaX;
+using TinaX.XILRuntime;
+using TinaX.XILRuntime.Registers;
+
+namespace Nekonya.Example
+{
+    public class AppBootstrap : IXBootstrap
+    {
+        public void OnInit(IXCore core)
+        {
+            var xil = core.GetService<IXILRuntime>(); 
+            xil.RegisterXComponent(); //extension method, namespace "TinaX.XILRuntime.Registers"
+        }
+        public void OnStart(IXCore core) { }
+        public void OnQuit() { }
+        public void OnAppRestart() { }
+    }
+}
+```
+
+<br>
+
+------
+
+## Install this package
+
+### Install via [openupm](https://openupm.com/)
+
+``` bash
+# Install openupm-cli if not installed.
+npm install -g openupm-cli
+# OR yarn global add openupm-cli
+
+#run install in your project root folder
+openupm add io.nekonya.tinax.xcomponent.ilruntime
+```
+
+<br>
+
+### Install via npm (UPM)
+
+Modify `Packages/manifest.json` file in your project, and add the following code before "dependencies" node of this file:
+
+``` json
+"scopedRegistries": [
+    {
+        "name": "TinaX",
+        "url": "https://registry.npmjs.org",
+        "scopes": [
+            "io.nekonya",
+            "com.ourpalm"
+        ]
+    },
+    {
+        "name": "package.openupm.com",
+        "url": "https://package.openupm.com",
+        "scopes": [
+            "com.cysharp.unitask",
+            "com.neuecc.unirx"
+        ]
+    }
+],
+```
+
+If after doing the above, you still cannot find the relevant Packages for TinaX in the "Unity Package Manager" window, You can also try refreshing, restarting the editor, or manually adding the following configuration to "dependencies" node.
+
+``` json
+"io.nekonya.tinax.xcomponent.ilruntime" : "6.6.1"
+```
+
+<br>
+
+### Install via git UPM:
+
+You can use the following to install and use this package in UPM GUI.  
 
 ```
 git://github.com/yomunsam/TinaX.XComponent.ILRuntime.git
 ```
 
-package name: `io.nekonya.tinax.xcomponent.ilruntime`
+If you want to set a target version, you can use release tag like `#6.6.1`. for detail you can see this page: [https://github.com/yomunsam/TinaX.XComponent.ILRuntime/releases](https://github.com/yomunsam/TinaX.XComponent.ILRuntime/releases)
 
-<br>
+
+
+<br><br>
 ------
 
 ## Dependencies
 
-在安装之前，请先确保已安装如下依赖：
+- [io.nekonya.tinax.ilruntime](https://github.com/yomunsam/TinaX.ILRuntime) :`git://github.com/yomunsam/TinaX.ILRuntime.git`
+- [io.nekonya.tinax.xcomponent](https://github.com/yomunsam/TinaX.XComponent) :`git://github.com/yomunsam/TinaX.XComponent.git`
 
-Before setup this package, please ensure the following dependencies are installed by `Unity Package Manager`:
+> if you install packages by git UPM， You need to install the dependencies manually. Or dependencies will installed automatically by NPM / OpenUPM
 
-- [io.nekonya.tinax.ilruntime](https://github.com/yomunsam/tinax.ILRuntime) :`git://github.com/yomunsam/TinaX.ILRuntime.git`
-- [io.nekonya.tinax.xcomponent](https://github.com/yomunsam/tinax.XComponent) :`git://github.com/yomunsam/TinaX.XComponent.git`
+<br><br>
 
 ------
 
-<!-- ## Third-Party
+## Learn TinaX
 
-本项目中使用了以下优秀的第三方库：
+You can find out how to use the various features of TinaX in the [documentation](https://tinax.corala.space)
+
+------
+
+## Third-Party
 
 The following excellent third-party libraries are used in this project:
 
-- **[ILRuntime](https://github.com/Ourpalm/ILRuntime)** : Pure C# IL Intepreter Runtime, which is fast and reliable for scripting requirement on enviorments, where jitting isn't possible. -->
+- **[ILRuntime](https://github.com/Ourpalm/ILRuntime)** : Pure C# IL Intepreter Runtime, which is fast and reliable for scripting requirement on enviorments, where jitting isn't possible.
