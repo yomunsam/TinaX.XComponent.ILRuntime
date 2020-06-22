@@ -2,11 +2,7 @@
 using ILRuntime.Runtime.Enviorment;
 using ILRuntime.Runtime.Intepreter;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TinaX.XComponent;
+using AppDomain = ILRuntime.Runtime.Enviorment.AppDomain;
 
 namespace TinaX.XComponent.Internal.Adaptor
 {
@@ -16,7 +12,7 @@ namespace TinaX.XComponent.Internal.Adaptor
 
         public override Type AdaptorType => typeof(MyXBehaviourAdaptor);
 
-        public override object CreateCLRInstance(ILRuntime.Runtime.Enviorment.AppDomain appdomain, ILTypeInstance instance)
+        public override object CreateCLRInstance(AppDomain appdomain, ILTypeInstance instance)
         {
             return new MyXBehaviourAdaptor(appdomain, instance);
         }
@@ -24,7 +20,7 @@ namespace TinaX.XComponent.Internal.Adaptor
         class MyXBehaviourAdaptor : XBehaviour , CrossBindingAdaptorType
         {
             ILTypeInstance instance;
-            ILRuntime.Runtime.Enviorment.AppDomain appdomain;
+            AppDomain appdomain;
 
             IMethod mOnEnable;
             bool mOnEnableGot;
@@ -84,7 +80,7 @@ namespace TinaX.XComponent.Internal.Adaptor
 
             }
 
-            public MyXBehaviourAdaptor(ILRuntime.Runtime.Enviorment.AppDomain appdomain, ILTypeInstance instance)
+            public MyXBehaviourAdaptor(AppDomain appdomain, ILTypeInstance instance)
             {
                 this.appdomain = appdomain;
                 this.instance = instance;
@@ -294,16 +290,16 @@ namespace TinaX.XComponent.Internal.Adaptor
             {
                 if (!mOnMessageGot)
                 {
-                    mOnMessage = instance.Type.GetMethod("OnMessage", 0);
+                    mOnMessage = instance.Type.GetMethod("OnMessage", 2);
                     mOnMessageGot = true;
                 }
 
                 if (mOnMessage != null && !mOnMessageInvoking)
                 {
                     mOnMessageInvoking = true;
-                    object[] param = new object[msgParams.Length + 1];
+                    object[] param = new object[2];
                     param[0] = msgName;
-                    msgParams.CopyTo(param, 1);
+                    param[1] = msgParams;
                     appdomain.Invoke(mOnMessage, instance, param);
                     mOnMessageInvoking = false;
                 }
