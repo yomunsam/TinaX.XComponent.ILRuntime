@@ -5,6 +5,7 @@
 using System;
 using System.Collections.Generic;
 using System.Reflection;
+using TinaX.XComponent;
 using TinaX.XComponent.Internal.Adaptor;
 using TinaXEditor.XILRuntime;
 
@@ -22,7 +23,10 @@ namespace TinaXEditor.XComponent.XILRuntime.Generator
         /// 生成CLR绑定代码的列表
         /// </summary>
         /// <returns></returns>
-        public List<Type> GetCLRBindingTypes() => null;
+        public List<Type> GetCLRBindingTypes() => new List<Type>
+        {
+            typeof(XILComponent),
+        };
 
         public HashSet<FieldInfo> GetCLRBindingExcludeFields() => null;
 
