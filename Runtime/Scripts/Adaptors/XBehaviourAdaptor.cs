@@ -234,7 +234,7 @@ namespace TinaX.XComponent.Internal.Adaptor
             {
                 if (!mOnApplicationFocusGot)
                 {
-                    mOnApplicationFocus = instance.Type.GetMethod("OnApplicationFocus", 0);
+                    mOnApplicationFocus = instance.Type.GetMethod("OnApplicationFocus", 1);
                     mOnApplicationFocusGot = true;
                 }
 
@@ -253,7 +253,7 @@ namespace TinaX.XComponent.Internal.Adaptor
             {
                 if (!mOnApplicationPauseGot)
                 {
-                    mOnApplicationPause = instance.Type.GetMethod("OnApplicationPause", 0);
+                    mOnApplicationPause = instance.Type.GetMethod("OnApplicationPause", 1);
                     mOnApplicationPauseGot = true;
                 }
 
