@@ -1,5 +1,6 @@
 {
-    "name": "TinaX.XComponent.ILRT",
+    "name": "TinaX.XComponent.ILRuntime",
+    "rootNamespace": "TinaX.XComponent.XILRuntime",
     "references": [
         "GUID:9db5e326baf15604fb41b0ba171e2039",
         "GUID:861b42dc2c9c68d49b36d568b9f894d0",

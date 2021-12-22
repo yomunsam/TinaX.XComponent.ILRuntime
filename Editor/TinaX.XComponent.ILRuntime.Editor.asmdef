@@ -1,5 +1,6 @@
 {
-    "name": "TinaX.XComponent.ILRT.Editor",
+    "name": "TinaX.XComponent.ILRuntime.Editor",
+    "rootNamespace": "TinaXEditor.XComponent.XILRuntime",
     "references": [
         "GUID:0415e14526b76a0478e07275a7237921",
         "GUID:9db5e326baf15604fb41b0ba171e2039",
