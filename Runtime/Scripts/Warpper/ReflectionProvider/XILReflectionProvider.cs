@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Reflection;
-using ILRuntime.CLR.Utils;
-using ILRuntime.Reflection;
 using ILRuntime.Runtime;
 using ILRuntime.Runtime.Enviorment;
 using ILRuntime.Runtime.Intepreter;
@@ -26,7 +24,7 @@ namespace TinaX.XComponent.XILRuntime.Warpper.ReflectionProvider
         }
         #endregion
 
-        readonly BindingFlags _BindingFlags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.DeclaredOnly;
+        //readonly BindingFlags _BindingFlags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.DeclaredOnly;
         readonly Type _NullableType = typeof(Nullable<>);
 
         public Type GetSourceType(ref object sourceObject)
